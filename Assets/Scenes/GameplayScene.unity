@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 316966258}
   - component: {fileID: 316966260}
   - component: {fileID: 316966259}
+  - component: {fileID: 316966261}
   m_Layer: 5
   m_Name: Stone
   m_TagString: Untagged
@@ -400,6 +401,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316966257}
   m_CullTransparentMesh: 1
+--- !u!114 &316966261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316966257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47209248f2574e2094c0f0227e21a7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLoop: {fileID: 1710723286}
+  type: 1
 --- !u!1 &734403074
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +426,7 @@ GameObject:
   - component: {fileID: 734403075}
   - component: {fileID: 734403077}
   - component: {fileID: 734403076}
+  - component: {fileID: 734403078}
   m_Layer: 5
   m_Name: Wood
   m_TagString: Untagged
@@ -535,6 +551,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734403074}
   m_CullTransparentMesh: 1
+--- !u!114 &734403078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734403074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47209248f2574e2094c0f0227e21a7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLoop: {fileID: 1710723286}
+  type: 0
 --- !u!1 &844334408
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,9 +988,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
-  m_Color: {r: 0.3584906, g: 0.33312568, b: 0.33312568, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 56fffbf717f135b4f819b090e9675efe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -978,8 +1007,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001231815}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.07170403, y: -3.063078, z: -0.25035334}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: 0, y: -3.05, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1801080218}
@@ -2088,6 +2117,7 @@ GameObject:
   - component: {fileID: 2084869578}
   - component: {fileID: 2084869580}
   - component: {fileID: 2084869579}
+  - component: {fileID: 2084869581}
   m_Layer: 5
   m_Name: Food
   m_TagString: Untagged
@@ -2212,3 +2242,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084869577}
   m_CullTransparentMesh: 1
+--- !u!114 &2084869581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084869577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47209248f2574e2094c0f0227e21a7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLoop: {fileID: 1710723286}
+  type: 2
