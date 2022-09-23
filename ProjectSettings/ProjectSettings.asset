@@ -771,6 +771,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     Standalone: UNITASK_DOTWEEN_SUPPORT;DOTWEEN_ENABLED
+    WebGL: UNITASK_DOTWEEN_SUPPORT;DOTWEEN_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
