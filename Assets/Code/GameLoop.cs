@@ -6,8 +6,9 @@ namespace Yarde
 {
     public class GameLoop : MonoBehaviour
     {
-        [Inject] private GameState _gameState;
+        [Inject] private readonly GameState _gameState;
 
+        public GameState State => _gameState;
         private float timer;
 
         private void Update()

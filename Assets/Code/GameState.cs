@@ -13,6 +13,8 @@ namespace Yarde
         public ObservableProperty<int> WallsLevel { get; }
 
         public ObservableProperty<float> FireFuel { get; }
+        
+        public ObservableProperty<bool> IsBusy { get; }
 
         public GameState()
         {
@@ -25,6 +27,8 @@ namespace Yarde
             WallsLevel = new ObservableProperty<int>(0, this);
 
             FireFuel = new ObservableProperty<float>(0, this);
+            
+            IsBusy = new ObservableProperty<bool>(false, this);
         }
 
         public override string ToString()
