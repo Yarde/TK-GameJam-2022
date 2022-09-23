@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using VContainer;
+using Yarde.Observable;
 using Yarde.Utils.Logger;
 
 namespace Yarde
@@ -10,6 +11,9 @@ namespace Yarde
 
         public GameState State => _gameState;
         private float timer;
+        private ObservableProperty<int> _cycles = new(0, null);
+        public ObservableProperty<int> Cycles => _cycles;
+
 
         private void Update()
         {
@@ -19,8 +23,9 @@ namespace Yarde
                 return;
             }
 
-            this.LogInfo(_gameState.ToString());
-            timer = 1;
+            this.LogInfo($"Cycle: {Cycles.Value}, State: {_gameState}");
+            timer = 0.1f;
+            _cycles.Value++;
         }
     }
 }

@@ -27,15 +27,13 @@ namespace Yarde.GameplayButtons
             _building = _gameLoop.State.Buildings[type];
 
             _gameLoop.State.IsBusy.OnValueChanged += SetButtonState;
-            _gameLoop.State.Wood.OnValueChanged += OnResourceChanged;
-            _gameLoop.State.Stone.OnValueChanged += OnResourceChanged;
-            _gameLoop.State.Food.OnValueChanged += OnResourceChanged;
+            _gameLoop.State.OnStateChanged += OnResourceChanged;
 
             _loadingIcon.enabled = false;
             SetButtonActive();
         }
 
-        private void OnResourceChanged(IObservableProperty<int> obj)
+        private void OnResourceChanged(IObservableState obj)
         {
             SetButtonActive();
         }
