@@ -1,0 +1,19 @@
+{
+  "name": "Yarde.WindowSystem.Editor",
+  "rootNamespace": "Yarde",
+  "references": [
+    "GUID:15d6fc50015a47cf980bcdba6720bf99",
+    "GUID:bad7ab2de97a4be296763c191fd3d651"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

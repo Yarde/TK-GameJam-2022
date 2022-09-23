@@ -1,0 +1,19 @@
+{
+  "name": "Yarde.Flows.Editor",
+  "rootNamespace": "Yarde",
+  "references": [
+    "GUID:395f859b7f8b423f8bfca9036a2280be",
+    "GUID:2c53b00dabce4645abb59e58fcd39cc3"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
