@@ -1,18 +1,22 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarde.Displayers;
 using Yarde.Observable;
 using Yarde.Utils.Extensions;
 
 namespace Yarde.GameplayButtons
 {
     [RequireComponent(typeof(Button))]
-    public abstract class ActionButton : MonoBehaviour
+    public class ActionButton : MonoBehaviour
     {
         [SerializeField] protected GameLoop _gameLoop;
         [SerializeField] private Image _loadingIcon;
         [SerializeField] private float _durationInSec;
+        [SerializeField] private ResourceType type;
+        [SerializeField] private int _gain = 1;
 
         private Button _button;
 
@@ -40,12 +44,17 @@ namespace Yarde.GameplayButtons
             _loadingIcon.DOFillAmount(1f, _durationInSec);
             await UniTask.Delay(_durationInSec.ToMilliseconds());
 
-            DoAction();
+            var value = type switch
+            {
+                ResourceType.Wood => _gameLoop.State.Wood,
+                ResourceType.Food => _gameLoop.State.Food,
+                ResourceType.Stone => _gameLoop.State.Stone,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            value.Value += _gain;
 
             _loadingIcon.enabled = false;
             _gameLoop.State.IsBusy.Value = false;
         }
-
-        protected abstract void DoAction();
     }
 }
