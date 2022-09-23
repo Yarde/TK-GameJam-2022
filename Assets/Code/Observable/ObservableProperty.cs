@@ -31,5 +31,10 @@ namespace Yarde.Observable
             base.InvokeChange();
             OnValueChanged?.Invoke(this);
         }
+
+        public static implicit operator T(ObservableProperty<T> property)
+        {
+            return property.Value;
+        }
     }
 }
