@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
-using Yarde.Buildings;
-using Yarde.GameplayButtons;
+using UnityEngine;
+using Yarde.Gameplay.Buildings;
+using Yarde.Gameplay.GameData;
+using Yarde.Gameplay.GameplayButtons;
 using Yarde.Observable;
 
-namespace Yarde
+namespace Yarde.Gameplay
 {
     public class GameState : ObservableState
     {
-        public ObservableProperty<int> Wood { get; }
-        public ObservableProperty<int> Stone { get; }
-        public ObservableProperty<int> Food { get; }
+        public ObservableProperty<float> Wood { get; }
+        public ObservableProperty<float> Stone { get; }
+        public ObservableProperty<float> Food { get; }
 
         public Dictionary<BuildingType, Building> Buildings = new();
 
@@ -19,9 +21,11 @@ namespace Yarde
 
         public GameState()
         {
-            Wood = new ObservableProperty<int>(0, this);
-            Stone = new ObservableProperty<int>(0, this);
-            Food = new ObservableProperty<int>(0, this);
+            var resourceData = Resources.Load<GameplayData>("GameplayData");
+            
+            Wood = new ObservableProperty<float>(resourceData.WoodData.StartAmount, this);
+            Stone = new ObservableProperty<float>(resourceData.StoneData.StartAmount, this);
+            Food = new ObservableProperty<float>(resourceData.FoodData.StartAmount, this);
 
             Buildings[BuildingType.Tent] = new Tent(this);
 

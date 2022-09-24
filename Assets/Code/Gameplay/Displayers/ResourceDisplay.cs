@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Yarde.Observable;
 
-namespace Yarde.Displayers
+namespace Yarde.Gameplay.Displayers
 {
     public class ResourceDisplay : MonoBehaviour
     {
@@ -13,38 +13,46 @@ namespace Yarde.Displayers
         [SerializeField] private ResourceType type;
 
         private TextMeshProUGUI _text;
-        private int _previousValue;
-        private ObservableProperty<int> _value;
+        private float _previousValue;
+        private string _format;
 
         private void Awake()
         {
             _text = GetComponent<TextMeshProUGUI>();
 
-            _value = type switch
+            var value = type switch
             {
                 ResourceType.Wood => gameLoop.State.Wood,
                 ResourceType.Stone => gameLoop.State.Stone,
                 ResourceType.Food => gameLoop.State.Food,
                 _ => throw new ArgumentOutOfRangeException()
             };
+            
+            _format = type switch
+            {
+                ResourceType.Food => "F1",
+                _ => ""
+            };
 
-            _value.OnValueChanged += OnChanged;
-            _previousValue = _value.Value;
+            value.OnValueChanged += OnChanged;
+            _previousValue = value.Value;
+            OnChanged(value);
         }
 
-        private void OnChanged(IObservableProperty<int> obj)
+        private void OnChanged(IObservableProperty<float> obj)
         {
-            _text.text = $"{type}: {_value.Value}";
-            if (_previousValue < _value.Value)
+            var roundedValue = obj.Value.ToString(_format);
+            _text.text = $"{type}: {roundedValue}";
+            if (_previousValue < obj.Value)
             {
                 AnimateGain().Forget();
             }
-            else
+            else if (_previousValue > obj.Value)
             {
                 AnimateLoss().Forget();
             }
 
-            _previousValue = _value.Value;
+            _previousValue = obj.Value;
         }
 
         private async UniTask AnimateGain()

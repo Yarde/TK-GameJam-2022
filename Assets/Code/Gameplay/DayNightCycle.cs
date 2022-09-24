@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Yarde.Observable;
 
-namespace Yarde
+namespace Yarde.Gameplay
 {
     public class DayNightCycle : MonoBehaviour
     {

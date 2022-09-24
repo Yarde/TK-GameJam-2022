@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using VContainer;
-using Yarde.GameData;
+using Yarde.Gameplay.GameData;
 using Yarde.Observable;
 using Yarde.Utils.Logger;
 
-namespace Yarde
+namespace Yarde.Gameplay
 {
     public class GameLoop : MonoBehaviour
     {
@@ -34,6 +34,12 @@ namespace Yarde
             this.LogInfo($"Cycle: {Cycles.Value}, State: {_gameState}");
             _timer = _data.TickLenght;
             _cycles.Value++;
+
+            if (_cycles.Value % Data.FoodLossCycles == 0)
+            {
+                _gameState.Food.Value -= Data.FoodLoss * (1 + Data.FoodLossModifier * Cycles);
+            }
+            
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Yarde.GameplayButtons
+namespace Yarde.Gameplay.GameplayButtons
 {
     public enum BuildingType
     {

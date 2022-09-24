@@ -1,6 +1,6 @@
 using System;
 
-namespace Yarde.Buildings
+namespace Yarde.Gameplay.Buildings
 {
     [Serializable]
     public class ResourceCost

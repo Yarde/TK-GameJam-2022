@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using Yarde.GameplayButtons;
+using Yarde.Gameplay.GameplayButtons;
 using Yarde.Observable;
 
-namespace Yarde.Buildings
+namespace Yarde.Gameplay.Buildings
 {
     public class BuildingView : MonoBehaviour
     {

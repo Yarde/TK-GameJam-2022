@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Yarde.Enemies
+namespace Yarde.Gameplay.Enemies
 {
     public class EnemyController : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Yarde.GameData;
+using Yarde.Gameplay.GameData;
 
-namespace Yarde.Buildings
+namespace Yarde.Gameplay.Buildings
 {
     public class Tent : Building
     {

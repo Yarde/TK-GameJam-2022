@@ -12,9 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f6eaffda5d4f0f8e6c240885d485a2, type: 3}
   m_Name: GameplayData
   m_EditorClassIdentifier: 
-  TickLenght: 0.1
-  DayLength: 1
-  NightLength: 0.5
-  FoodLoss: 1
-  FoodLossModifier: 0.1
+  TickLenght: 1
+  DayLength: 100
+  DayNightRatio: 0.7
+  FoodLoss: 0.5
+  FoodLossModifier: 0.001
+  FoodLossCycles: 5
   AttacksModifier: 2
+  WoodData:
+    Gain: 2
+    TimeToCollect: 2
+    StartAmount: 0
+  StoneData:
+    Gain: 1
+    TimeToCollect: 5
+    StartAmount: 0
+  FoodData:
+    Gain: 5
+    TimeToCollect: 1
+    StartAmount: 10

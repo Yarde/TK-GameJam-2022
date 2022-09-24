@@ -1,8 +1,8 @@
-﻿using Yarde.GameData;
+﻿using Yarde.Gameplay.GameData;
 using Yarde.Observable;
 using Yarde.Utils.Logger;
 
-namespace Yarde.Buildings
+namespace Yarde.Gameplay.Buildings
 {
     public abstract class Building
     {

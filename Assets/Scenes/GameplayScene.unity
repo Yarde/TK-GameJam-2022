@@ -3441,7 +3441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameLoop: {fileID: 1710723286}
   _loadingIcon: {fileID: 4381102306004578680}
-  _durationInSec: 5
   type: 0
 --- !u!114 &4381102306004578680
 MonoBehaviour:
