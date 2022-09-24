@@ -1,5 +1,6 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Yarde.Gameplay
 {
@@ -8,6 +9,7 @@ namespace Yarde.Gameplay
         [SerializeField] private GameLoop _gameLoop;
         [SerializeField] private Menu _menu;
         [SerializeField] private GameObject _gameplayUI;
+        [SerializeField] private GraphicRaycaster raycaster;
 
         private void Start()
         {
@@ -17,18 +19,24 @@ namespace Yarde.Gameplay
             _gameLoop.OnLoss += OnLoss;
         }
 
-        private void OnWin()
+        private async void OnWin()
         {
+            raycaster.enabled = false;
+            await UniTask.Delay(2000);
             _gameplayUI.SetActive(false);
             _menu.gameObject.SetActive(true);
             _menu.ShowMenu("You Won!", $"You managed to beat the game in {_gameLoop.Cycles.Value} seconds");
+            raycaster.enabled = true;
         }
-        
-        private void OnLoss(string reason)
+
+        private async void OnLoss(string reason)
         {
+            raycaster.enabled = false;
+            await UniTask.Delay(2000);
             _gameplayUI.SetActive(false);
             _menu.gameObject.SetActive(true);
             _menu.ShowMenu("You Lost!", $"{reason}. You managed to last {_gameLoop.Cycles.Value} seconds");
+            raycaster.enabled = true;
         }
     }
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: 
   TimeToActivate: 5
-  ThresholdToActivate: 0.1
+  ThresholdToActivate: 0.2
   ChanceOfOccurence: 1
-  TimeToKill: 1.5
-  AttackSpeed: 5
+  TimeToKill: 2
+  AttackSpeed: 3
   Threat: 5

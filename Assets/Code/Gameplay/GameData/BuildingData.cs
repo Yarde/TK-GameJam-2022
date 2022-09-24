@@ -11,5 +11,6 @@ namespace Yarde.Gameplay.GameData
         public List<Sprite> Sprites;
         public int MaxLevel => Costs.Count - 1;
         public float BuildTime;
+        public int HealthPoints;
     }
 }

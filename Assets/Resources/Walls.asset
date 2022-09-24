@@ -31,3 +31,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 31a242ab7c9962b4e949c0f717960c07, type: 3}
   - {fileID: 21300000, guid: 7515431444245774dbe34e078c9ea8ea, type: 3}
   BuildTime: 7
+  HealthPoints: 4

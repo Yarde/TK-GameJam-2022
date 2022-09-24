@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using Yarde.Gameplay.GameData;
+﻿using Yarde.Gameplay.GameData;
+using Yarde.Gameplay.GameplayButtons;
 using Yarde.Observable;
 
 namespace Yarde.Gameplay.Buildings
@@ -7,13 +7,15 @@ namespace Yarde.Gameplay.Buildings
     public abstract class Building
     {
         public ObservableProperty<int> Level { get; }
+        public ObservableProperty<int> HealthPoints { get; }
         public BuildingData Data;
-        private GameState _state;
+        protected GameState _state;
 
         protected Building(GameState state)
         {
             _state = state;
             Level = new ObservableProperty<int>(0, state);
+            HealthPoints = new ObservableProperty<int>(3, state);
         }
 
         public void Upgrade(GameLoop gameLoop)
@@ -24,8 +26,9 @@ namespace Yarde.Gameplay.Buildings
             }
 
             Level.Value++;
+            HealthPoints.Value = Data.HealthPoints;
 
-            if (_state.Buildings.All(x => x.Value.Level == x.Value.Data.MaxLevel))
+            if (_state.Buildings[BuildingType.Tent].Level.Value == _state.Buildings[BuildingType.Tent].Data.MaxLevel)
             {
                 gameLoop.OnWin.Invoke();
             }
@@ -33,7 +36,11 @@ namespace Yarde.Gameplay.Buildings
 
         public virtual void Downgrade(GameLoop gameLoop)
         {
-            Level.Value--;
+            HealthPoints.Value--;
+            if (HealthPoints.Value <= 0)
+            {
+                Level.Value--;
+            }
         }
     }
 }

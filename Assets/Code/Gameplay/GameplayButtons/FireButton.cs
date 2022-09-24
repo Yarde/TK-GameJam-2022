@@ -32,7 +32,7 @@ namespace Yarde.Gameplay.GameplayButtons
         private void OnTick(IObservableProperty<int> obj)
         {
             _fireFuel.Value -= _fireData.FuelLossOnTick;
-            if (_fireFuel.Value <= 0f)
+            if (_fireFuel.Value <= 0f || _fireplace.Level < 1)
             {
                 _fireFuel.Value = 0f;
 

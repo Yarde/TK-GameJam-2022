@@ -17,6 +17,12 @@ namespace Yarde.Gameplay.Enemies
         [SerializeField] private AudioClip onAttack;
         [SerializeField] private AudioClip onDead;
 
+
+        [SerializeField] private Vector3 start;
+        [SerializeField] private Vector3 enter;
+        [SerializeField] private Vector3 middle = new(0f, 0f, -6f);
+
+
         public ObservableProperty<bool> IsActive { get; private set; }
         private EnemyData _data;
         private GameLoop _gameLoop;
@@ -32,6 +38,9 @@ namespace Yarde.Gameplay.Enemies
 
         public void Show()
         {
+            transform.position = start;
+            transform.DOMove(enter, 1f);
+
             IsActive.Value = true;
             spriteRenderer.color = new Color(1f, 1f, 1f, 0f);
             spriteRenderer.enabled = true;
@@ -53,6 +62,9 @@ namespace Yarde.Gameplay.Enemies
                 source.clip = onAttack;
                 source.Play();
                 transform.DOShakePosition(0.3f, 2f);
+                await transform.DOMove(middle, 0.4f).SetEase(Ease.InCubic).WithCancellation(_cancellation.Token);
+                if (_cancellation.IsCancellationRequested) return;
+                transform.DOMove(enter, 0.4f).SetEase(Ease.OutCubic);
                 await UniTask.Delay(_data.AttackSpeed.ToMilliseconds(), cancellationToken: _cancellation.Token);
             }
         }
