@@ -8,7 +8,7 @@ namespace Yarde.Gameplay
         [SerializeField] private GameLoop gameLoop;
         [SerializeField] private Light light;
 
-        private void Awake()
+        private void Start()
         {
             gameLoop.Cycles.OnValueChanged += OnCycleChange;
         }

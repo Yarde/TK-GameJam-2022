@@ -22,12 +22,14 @@ namespace Yarde.Gameplay
         public GameState()
         {
             var resourceData = Resources.Load<GameplayData>("GameplayData");
-            
+
             Wood = new ObservableProperty<float>(resourceData.WoodData.StartAmount, this);
             Stone = new ObservableProperty<float>(resourceData.StoneData.StartAmount, this);
             Food = new ObservableProperty<float>(resourceData.FoodData.StartAmount, this);
 
             Buildings[BuildingType.Tent] = new Tent(this);
+            Buildings[BuildingType.Wall] = new Walls(this);
+            Buildings[BuildingType.Fireplace] = new Fireplace(this);
 
             FireFuel = new ObservableProperty<float>(0, this);
             IsBusy = new ObservableProperty<bool>(false, this);

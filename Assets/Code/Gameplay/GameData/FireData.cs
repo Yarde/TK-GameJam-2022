@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Yarde.Gameplay.GameData
 {
-    [CreateAssetMenu(menuName = "Data/Buildings")]
+    [CreateAssetMenu(menuName = "Data/Fire")]
     public class FireData : ScriptableObject
     {
         public float ActionTime;

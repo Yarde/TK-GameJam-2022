@@ -12,14 +12,17 @@ namespace Yarde.Gameplay
 
         private float _timer;
         private GameplayData _data;
-        private ObservableProperty<int> _cycles = new(0, null);
+        private ObservableProperty<int> _cycles;
 
         public GameState State => _gameState;
         public GameplayData Data => _data;
         public ObservableProperty<int> Cycles => _cycles;
+        public float CurrentTime => Mathf.Cos((_cycles - _data.DayLength) / _data.DayLength) + _data.DayNightRatio;
+        public bool IsNight => CurrentTime <= 0f;
 
         private void Awake()
         {
+            _cycles = new(0, _gameState);
             _data = Resources.Load<GameplayData>("GameplayData");
         }
 
@@ -31,13 +34,13 @@ namespace Yarde.Gameplay
                 return;
             }
 
-            this.LogInfo($"Cycle: {Cycles.Value}, State: {_gameState}");
+            this.LogInfo($"Cycle: {_cycles.Value}, State: {_gameState}");
             _timer = _data.TickLenght;
             _cycles.Value++;
 
-            if (_cycles.Value % Data.FoodLossCycles == 0)
+            if (_cycles.Value % _data.FoodLossCycles == 0)
             {
-                _gameState.Food.Value -= Data.FoodLoss * (1 + Data.FoodLossModifier * Cycles);
+                _gameState.Food.Value -= _data.FoodLoss * (1 + _data.FoodLossModifier * _cycles.Value);
             }
             
         }
