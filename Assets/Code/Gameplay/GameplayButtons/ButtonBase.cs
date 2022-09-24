@@ -21,8 +21,6 @@ namespace Yarde.Gameplay.GameplayButtons
 
             _gameLoop.State.IsBusy.OnValueChanged += SetButtonState;
 
-            _loadingIcon.enabled = false;
-
             Setup();
         }
         
@@ -34,13 +32,11 @@ namespace Yarde.Gameplay.GameplayButtons
         private async void StartAction()
         {
             _gameLoop.State.IsBusy.Value = true;
-
-            _loadingIcon.enabled = true;
+            
             _loadingIcon.fillAmount = 0;
 
             await DoAction();
-
-            _loadingIcon.enabled = false;
+            
             _gameLoop.State.IsBusy.Value = false;
         }
 

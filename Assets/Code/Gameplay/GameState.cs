@@ -59,24 +59,19 @@ namespace Yarde.Gameplay
         {
             if (Buildings[BuildingType.Wall].Level > 0)
             {
-                Buildings[BuildingType.Wall].Level.Value--;
+                Buildings[BuildingType.Wall].Downgrade();
                 return;
             }
 
             if (Buildings[BuildingType.Fireplace].Level > 0)
             {
-                Buildings[BuildingType.Fireplace].Level.Value--;
+                Buildings[BuildingType.Fireplace].Downgrade();
                 return;
             }
 
             if (Buildings[BuildingType.Tent].Level > 0)
             {
-                Buildings[BuildingType.Tent].Level.Value--;
-            }
-
-            if (Buildings[BuildingType.Tent].Level == 0)
-            {
-                this.LogError("Game Lost!");
+                Buildings[BuildingType.Tent].Downgrade();
             }
         }
     }

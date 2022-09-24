@@ -10,6 +10,7 @@ namespace Yarde.Gameplay.GameplayButtons
     public class UpgradeButton : ButtonBase
     {
         [SerializeField] private BuildingType type;
+        [SerializeField] private Tooltip tooltip;
 
         private Building _building;
 
@@ -30,11 +31,15 @@ namespace Yarde.Gameplay.GameplayButtons
             if (_building.Data.MaxLevel <= _building.Level)
             {
                 _button.gameObject.SetActive(false);
+                tooltip.gameObject.SetActive(false);
                 return;
             }
 
             var cost = _building.Data.Costs[_building.Level + 1];
-            _button.gameObject.SetActive(cost.HasEnough(_gameLoop.State));
+            _button.interactable = cost.HasEnough(_gameLoop.State) && !_gameLoop.State.IsBusy.Value;
+            _button.gameObject.SetActive(true);
+            tooltip.gameObject.SetActive(true);
+            tooltip.SetPrice(cost.Wood, cost.Stone);
         }
 
         protected override async UniTask DoAction()

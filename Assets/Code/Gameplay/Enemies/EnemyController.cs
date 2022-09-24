@@ -55,7 +55,7 @@ namespace Yarde.Gameplay.Enemies
                     }
                 }
 
-                this.LogWarning($"Enemy {i}, {enemy.IsActive.Value}, thread: {threat}, max: {maxThreat}");
+                this.LogInfo($"Enemy {i}, {enemy.IsActive.Value}, thread: {threat}, max: {maxThreat}");
             }
         }
     }

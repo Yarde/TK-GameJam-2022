@@ -23,12 +23,8 @@ namespace Yarde.Gameplay.Buildings
             Level.Value++;
         }
         
-        public void Downgrade()
+        public virtual void Downgrade()
         {
-            if (Level == 0)
-            {
-                this.LogError("Game lost!");
-            }
             Level.Value--;
         }
     }

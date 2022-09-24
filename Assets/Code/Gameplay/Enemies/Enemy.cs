@@ -42,6 +42,7 @@ namespace Yarde.Gameplay.Enemies
             while (!_cancellation.IsCancellationRequested)
             {
                 _gameLoop.State.Attack();
+                transform.DOShakePosition(0.3f, 2f);
                 await UniTask.Delay(_data.AttackSpeed.ToMilliseconds(), cancellationToken: _cancellation.Token);
             }
         }

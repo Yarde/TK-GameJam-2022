@@ -11,15 +11,13 @@ namespace Yarde.Gameplay.Displayers
     {
         [SerializeField] protected GameLoop gameLoop;
         [SerializeField] private ResourceType type;
-
-        private TextMeshProUGUI _text;
+        [SerializeField] private TextMeshProUGUI text;
+        
         private float _previousValue;
         private string _format;
 
         private void Awake()
         {
-            _text = GetComponent<TextMeshProUGUI>();
-
             var value = type switch
             {
                 ResourceType.Wood => gameLoop.State.Wood,
@@ -42,7 +40,7 @@ namespace Yarde.Gameplay.Displayers
         private void OnChanged(IObservableProperty<float> obj)
         {
             var roundedValue = obj.Value.ToString(_format);
-            _text.text = $"{type}: {roundedValue}";
+            text.text = $"{roundedValue}";
             if (_previousValue < obj.Value)
             {
                 AnimateGain().Forget();
@@ -57,14 +55,14 @@ namespace Yarde.Gameplay.Displayers
 
         private async UniTask AnimateGain()
         {
-            await _text.DOColor(Color.green, 0.2f);
-            await _text.DOColor(Color.white, 0.2f);
+            await text.DOColor(Color.green, 0.2f);
+            await text.DOColor(Color.white, 0.2f);
         }
 
         private async UniTask AnimateLoss()
         {
-            await _text.DOColor(Color.red, 0.2f);
-            await _text.DOColor(Color.white, 0.2f);
+            await text.DOColor(Color.red, 0.2f);
+            await text.DOColor(Color.white, 0.2f);
         }
     }
 

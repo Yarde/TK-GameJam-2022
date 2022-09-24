@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Yarde.Gameplay.GameData;
+using Yarde.Utils.Logger;
 
 namespace Yarde.Gameplay.Buildings
 {
@@ -9,6 +10,15 @@ namespace Yarde.Gameplay.Buildings
         {
             Data = Resources.Load<BuildingData>("Tent");
             Level.Value = 1;
+        }
+
+        public override void Downgrade()
+        {
+            base.Downgrade();
+            if (Level == 0)
+            {
+                this.LogError("Game lost!");
+            }
         }
     }
 }

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GameplayData
   m_EditorClassIdentifier: 
   TickLenght: 1
-  DayLength: 100
-  DayNightRatio: 0.7
+  DayLength: 20
+  DayNightRatio: 0.6
   FoodLoss: 0.5
-  FoodLossModifier: 0.001
+  FoodLossModifier: 0.01
   FoodLossCycles: 5
   AttacksModifier: 2
   WoodData:
