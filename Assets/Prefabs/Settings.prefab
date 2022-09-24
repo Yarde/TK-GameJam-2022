@@ -173,7 +173,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: -200}
+  m_SizeDelta: {x: -100, y: -160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8531999293751887727
 CanvasRenderer:
@@ -280,11 +280,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<color=#800><b><size=72>Welcome to Primordial!</size></b></color>\n\nYour
-    goal it to develop your camp into a village. \nCollect <color=#800><b>wood</b></color>,
-    <color=#800><b>stone</b></color>, and <color=#800><b>berries</b></color>. Feed
-    your people and defend them from wildlife. Use <color=#800><b>Fire</b></color>
-    to scare the wildlife and build <color=#800><b>walls</b></color> to protect your
-    people.\nUpgrade your buildings to win!"
+    goal it to <color=#800><b>upgrade your tent</b></color> into a settlement. \nCollect
+    <color=#800><b>wood</b></color>, <color=#800><b>stone</b></color>, and <color=#800><b>berries</b></color>.
+    Feed your people and defend them from wildlife. Use <color=#800><b>Fire</b></color>
+    to scare the wolfs and build <color=#800><b>walls</b></color> to protect your
+    people.\nUpgrade your tent to win, but <color=#800><b>watch out for wolves and
+    starvation, you cannot be in two places at once!</b></color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1fef449dc2cf7848b91bb78de432362, type: 2}
   m_sharedMaterial: {fileID: 7678926214816102556, guid: d1fef449dc2cf7848b91bb78de432362,
@@ -348,7 +349,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 49.430786, y: 0, z: 9.505859, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

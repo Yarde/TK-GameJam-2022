@@ -17,7 +17,7 @@ namespace Yarde.Gameplay.Buildings
             base.Downgrade(gameLoop);
             if (Level == 0)
             {
-                gameLoop.OnLoss.Invoke("Your village is destroyed! Protect it with walls and fire next time.");
+                gameLoop.OnLoss.Invoke(GameResult.LossWolf);
             }
         }
     }

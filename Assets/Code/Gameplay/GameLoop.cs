@@ -23,7 +23,7 @@ namespace Yarde.Gameplay
         public bool IsNight => CurrentTime <= 0f;
 
         public Action OnWin;
-        public Action<string> OnLoss;
+        public Action<GameResult> OnLoss;
 
         private void Awake()
         {
@@ -52,7 +52,7 @@ namespace Yarde.Gameplay
                 _gameState.Food.Value -= _data.FoodLoss * (1 + _data.FoodLossModifier * _cycles.Value);
                 if (_gameState.Food.Value < 0)
                 {
-                    OnLoss?.Invoke("You let your people starve to death. Make sure to feed them next time!");
+                    OnLoss?.Invoke(GameResult.LossFood);
                 }
             }
         }
