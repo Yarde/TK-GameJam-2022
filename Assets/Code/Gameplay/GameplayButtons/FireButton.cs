@@ -41,6 +41,11 @@ namespace Yarde.Gameplay.GameplayButtons
                 return;
             }
 
+            AnimateLight();
+        }
+
+        private void AnimateLight()
+        {
             particleObject.SetActive(true);
             _light.gameObject.SetActive(true);
             _light.DOIntensity(_fireFuel * _fireplace.Level, 0.2f);
@@ -67,7 +72,7 @@ namespace Yarde.Gameplay.GameplayButtons
                 return;
             }
 
-            if (_fireData.MaxFuel * (_fireplace.Level + 1) <= _gameLoop.State.FireFuel.Value)
+            if (_fireData.MaxFuel * _fireplace.Level <= _gameLoop.State.FireFuel.Value)
             {
                 _button.gameObject.SetActive(false);
                 return;
