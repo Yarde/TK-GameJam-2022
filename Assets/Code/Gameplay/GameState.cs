@@ -4,6 +4,7 @@ using Yarde.Gameplay.Buildings;
 using Yarde.Gameplay.GameData;
 using Yarde.Gameplay.GameplayButtons;
 using Yarde.Observable;
+using Yarde.Utils.Logger;
 
 namespace Yarde.Gameplay
 {
@@ -52,6 +53,31 @@ namespace Yarde.Gameplay
             Wood.Value -= dataCost.Wood;
             Stone.Value -= dataCost.Stone;
             Food.Value -= dataCost.Food;
+        }
+
+        public void Attack()
+        {
+            if (Buildings[BuildingType.Wall].Level > 0)
+            {
+                Buildings[BuildingType.Wall].Level.Value--;
+                return;
+            }
+
+            if (Buildings[BuildingType.Fireplace].Level > 0)
+            {
+                Buildings[BuildingType.Fireplace].Level.Value--;
+                return;
+            }
+
+            if (Buildings[BuildingType.Tent].Level > 0)
+            {
+                Buildings[BuildingType.Tent].Level.Value--;
+            }
+
+            if (Buildings[BuildingType.Tent].Level == 0)
+            {
+                this.LogError("Game Lost!");
+            }
         }
     }
 }

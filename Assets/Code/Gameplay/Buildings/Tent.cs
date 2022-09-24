@@ -8,6 +8,7 @@ namespace Yarde.Gameplay.Buildings
         public Tent(GameState state) : base(state)
         {
             Data = Resources.Load<BuildingData>("Tent");
+            Level.Value = 1;
         }
     }
 }

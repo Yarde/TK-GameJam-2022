@@ -37,7 +37,7 @@ namespace Yarde.Gameplay.GameplayButtons
 
         protected override async UniTask DoAction()
         {
-            _loadingIcon.DOFillAmount(1f, _data.TimeToCollect);
+            _loadingIcon.DOFillAmount(1f, _data.TimeToCollect).SetEase(Ease.Linear);
             await UniTask.Delay(_data.TimeToCollect.ToMilliseconds());
             _value.Value += (int)_data.Gain;
         }

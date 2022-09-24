@@ -61,6 +61,12 @@ namespace Yarde.Gameplay.GameplayButtons
 
         private void SetButtonActive()
         {
+            if (_fireplace.Level < 1)
+            {
+                _button.gameObject.SetActive(false);
+                return;
+            }
+
             if (_fireData.MaxFuel * (_fireplace.Level + 1) <= _gameLoop.State.FireFuel.Value)
             {
                 _button.gameObject.SetActive(false);
@@ -72,7 +78,7 @@ namespace Yarde.Gameplay.GameplayButtons
 
         protected override async UniTask DoAction()
         {
-            _loadingIcon.DOFillAmount(1f, _fireData.ActionTime);
+            _loadingIcon.DOFillAmount(1f, _fireData.ActionTime).SetEase(Ease.Linear);
             await UniTask.Delay(_fireData.ActionTime.ToMilliseconds());
 
             _gameLoop.State.FireFuel.Value += _fireData.FuelGainOnAction;
