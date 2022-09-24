@@ -15,5 +15,5 @@ MonoBehaviour:
   ActionTime: 0.5
   MaxFuel: 20
   ActionWoodCost: 1
-  FuelLossOnTick: 0.5
-  FuelGainOnAction: 5
+  FuelLossOnTick: 0.1
+  FuelGainOnAction: 10

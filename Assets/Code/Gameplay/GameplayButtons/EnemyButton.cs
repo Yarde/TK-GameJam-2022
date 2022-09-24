@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using UnityEngine;
 using Yarde.Gameplay.Enemies;
 using Yarde.Gameplay.GameData;
 using Yarde.Observable;
@@ -25,11 +24,20 @@ namespace Yarde.Gameplay.GameplayButtons
 
         private void OnActiveChange(IObservableProperty<bool> obj)
         {
+            if (!_button)
+            {
+                return;
+            }
+
             _button.gameObject.SetActive(obj.Value);
         }
 
         protected override void Setup()
         {
+            if (_enemy)
+            {
+                OnActiveChange(_enemy.IsActive);
+            }
         }
 
         protected override async UniTask DoAction()

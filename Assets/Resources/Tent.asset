@@ -25,13 +25,9 @@ MonoBehaviour:
   - Wood: 10
     Stone: 6
     Food: 0
-  - Wood: 20
-    Stone: 10
-    Food: 0
   Sprites:
   - {fileID: 0}
-  - {fileID: 21300000, guid: 32c5cb0f370af58449dd68bfb6ff655b, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 56fffbf717f135b4f819b090e9675efe, type: 3}
-  - {fileID: 21300000, guid: 311e8ae50ee2e7841997563e13bd2dba, type: 3}
+  - {fileID: 21300000, guid: f3210724ba5159b4881f48391f5e4971, type: 3}
+  - {fileID: 21300000, guid: f10bfbc9277f87046ae3fe3d131f2b52, type: 3}
+  - {fileID: 21300000, guid: 53cca9d025bf2f1419486e48469d4107, type: 3}
   BuildTime: 8

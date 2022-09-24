@@ -12,15 +12,6 @@ namespace Yarde.Gameplay.Buildings
             Level.Value = 1;
         }
 
-        public override void Upgrade(GameLoop gameLoop)
-        {
-            base.Upgrade(gameLoop);
-            if (Level == Data.MaxLevel)
-            {
-                gameLoop.OnWin.Invoke();
-            }
-        }
-
         public override void Downgrade(GameLoop gameLoop)
         {
             base.Downgrade(gameLoop);
