@@ -1,6 +1,7 @@
 ﻿using Yarde.Gameplay.GameData;
 using Yarde.Gameplay.GameplayButtons;
 using Yarde.Observable;
+using Yarde.Utils.Logger;
 
 namespace Yarde.Gameplay.Buildings
 {
@@ -15,7 +16,7 @@ namespace Yarde.Gameplay.Buildings
         {
             _state = state;
             Level = new ObservableProperty<int>(0, state);
-            HealthPoints = new ObservableProperty<int>(3, state);
+            HealthPoints = new ObservableProperty<int>(2, state);
         }
 
         public void Upgrade(GameLoop gameLoop)
@@ -41,6 +42,7 @@ namespace Yarde.Gameplay.Buildings
             {
                 Level.Value = 0;
             }
+            this.LogWarning($"{GetType()} got damaged, {HealthPoints.Value}, {Level.Value}");
         }
     }
 }
