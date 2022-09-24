@@ -37,14 +37,31 @@ namespace Yarde.WindowSystem.TransitionProvider
 
             public async UniTask TransitionOut(CancellationToken cancelToken) => await UniTask.CompletedTask;
 
-            public void Kill() { }
+            public void Kill()
+            {
+            }
         }
 
-        public enum AnimationType { TweenScale, TweenPosition, TweenAlpha }
-        public enum MoveDirection { Top, Bottom, Left, Right }
+        public enum AnimationType
+        {
+            TweenScale,
+            TweenPosition,
+            TweenAlpha
+        }
+
+        public enum MoveDirection
+        {
+            Top,
+            Bottom,
+            Left,
+            Right
+        }
 
         [SerializeField] private AnimationType animationType = AnimationType.TweenPosition;
-        [SerializeField] [ShowIf(nameof(IsTweenPosition))] private MoveDirection moveDirection = MoveDirection.Bottom;
+
+        [SerializeField] [ShowIf(nameof(IsTweenPosition))]
+        private MoveDirection moveDirection = MoveDirection.Bottom;
+
         [SerializeField] private float duration = 1.0f;
         [SerializeField] private float delay;
         [SerializeField] private Ease ease = Ease.Linear;
@@ -99,6 +116,7 @@ namespace Yarde.WindowSystem.TransitionProvider
             {
                 Init();
             }
+
             if (_cancelToken != null && !_cancelToken.Token.IsCancellationRequested && _transition != null)
             {
                 await _transition.TransitionIn(_cancelToken.Token);

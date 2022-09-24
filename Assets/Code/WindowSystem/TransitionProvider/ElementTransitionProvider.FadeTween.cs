@@ -14,7 +14,7 @@ namespace Yarde.WindowSystem.TransitionProvider
 
             private const float HIDDEN_ALPHA = 0.0f;
             private readonly float _shownAlpha;
-            
+
             public DoTweenFadeTransition(TransitionProvider target) : base(target)
             {
                 if (target.TryGetComponent(out _graphic))
@@ -35,13 +35,15 @@ namespace Yarde.WindowSystem.TransitionProvider
                 {
                     return _graphic.DOFade(_shownAlpha, target.duration).SetEase(target.ease).SetDelay(target.delay);
                 }
+
                 if (_group)
                 {
                     return _group.DOFade(_shownAlpha, target.duration).SetEase(target.ease).SetDelay(target.delay);
                 }
 
 
-                this.LogError($"Target {target.name} doesn't have a {nameof(Graphic)} nor {nameof(CanvasGroup)} component.");
+                this.LogError(
+                    $"Target {target.name} doesn't have a {nameof(Graphic)} nor {nameof(CanvasGroup)} component.");
                 return null;
             }
 
@@ -51,6 +53,7 @@ namespace Yarde.WindowSystem.TransitionProvider
                 color.a = alpha;
                 graphic.color = color;
             }
+
             private void SetColorAlpha(CanvasGroup group, float alpha)
             {
                 group.alpha = alpha;

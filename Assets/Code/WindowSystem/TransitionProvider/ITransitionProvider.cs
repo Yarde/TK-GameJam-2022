@@ -8,5 +8,4 @@ namespace Yarde.WindowSystem.TransitionProvider
         UniTask TransitionIn();
         UniTask TransitionOut();
     }
-
 }

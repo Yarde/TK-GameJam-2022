@@ -5,8 +5,11 @@ namespace Yarde.WindowSystem.TransitionProvider
 {
     internal static class ElementTransitionProviderExtensions
     {
-        public static UniTask TransitionInSafe(this ITransitionProvider transition) => transition?.TransitionIn() ?? UniTask.CompletedTask;
-        public static UniTask TransitionOutSafe(this ITransitionProvider transition) => transition?.TransitionOut() ?? UniTask.CompletedTask;
+        public static UniTask TransitionInSafe(this ITransitionProvider transition) =>
+            transition?.TransitionIn() ?? UniTask.CompletedTask;
+
+        public static UniTask TransitionOutSafe(this ITransitionProvider transition) =>
+            transition?.TransitionOut() ?? UniTask.CompletedTask;
 
         /// <summary>
         /// Quick way to call all TransitionIn animations for TransitionProvider of this object (and optionally, its children)

@@ -4,5 +4,4 @@
     {
         T GetWindow<T>(WindowType windowName) where T : WindowBase;
     }
-
 }

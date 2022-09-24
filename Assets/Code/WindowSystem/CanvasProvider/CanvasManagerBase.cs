@@ -4,7 +4,7 @@ using Yarde.WindowSystem.WindowProvider;
 
 namespace Yarde.WindowSystem.CanvasProvider
 {
-    [LogSettings(color:"#aaf")]
+    [LogSettings(color: "#aaf")]
     internal abstract class CanvasManagerBase : MonoBehaviour
     {
         public abstract Transform GetWindowParent();

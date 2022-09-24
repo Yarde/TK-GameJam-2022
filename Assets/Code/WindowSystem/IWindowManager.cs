@@ -5,7 +5,7 @@ using Yarde.WindowSystem.WindowProvider;
 
 namespace Yarde.WindowSystem
 {
-    [LogSettings(color:"#ACA")]
+    [LogSettings(color: "#ACA")]
     public interface IWindowManager
     {
         UniTask<T> Add<T>(WindowType windowType, Func<T, UniTask> setup = null) where T : WindowBase;

@@ -26,6 +26,10 @@ namespace Yarde.Gameplay.GameplayButtons
             SetButtonActive();
         }
 
+        protected override void SetButtonState(IObservableProperty<bool> obj)
+        {
+        }
+
         private void SetButtonActive()
         {
             if (_building.Data.MaxLevel <= _building.Level)
@@ -47,9 +51,8 @@ namespace Yarde.Gameplay.GameplayButtons
             _loadingIcon.DOFillAmount(1f, _building.Data.BuildTime).SetEase(Ease.Linear);
             await UniTask.Delay(_building.Data.BuildTime.ToMilliseconds());
 
-            _building.Upgrade();
+            _building.Upgrade(_gameLoop);
             _gameLoop.State.TakeResources(_building.Data.Costs[_building.Level]);
-            SetButtonActive();
         }
     }
 }

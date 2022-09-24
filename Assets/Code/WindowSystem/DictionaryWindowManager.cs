@@ -32,7 +32,7 @@ namespace Yarde.WindowSystem
                 this.LogError($"Window of type {windowType} already in dictionary!");
                 return null;
             }
-            
+
             T prefab = _windowProvider.GetWindow<T>(windowType);
             Transform parent = _canvasManager.GetWindowParent();
             T window = Object.Instantiate(prefab, parent);

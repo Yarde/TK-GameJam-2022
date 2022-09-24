@@ -37,7 +37,7 @@ namespace Yarde.Flows
             _button = GetComponent<Button>();
             _button.onClick.AddListener(OnClick);
         }
-        
+
         private Type FetchEventType(string evName)
         {
             Type eventType = null;
@@ -51,7 +51,7 @@ namespace Yarde.Flows
 
             return eventType;
         }
-        
+
         private IEvent CreateEvent(Type type)
         {
             IEvent evt = null;
@@ -78,7 +78,7 @@ namespace Yarde.Flows
                 this.LogError("Dispatcher missing ensure it is injected properly!");
                 return;
             }
-            
+
             Type type = FetchEventType(eventName);
             IEvent ev = CreateEvent(type);
             _dispatcher.RaiseEvent(ev);

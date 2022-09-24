@@ -7,5 +7,4 @@ namespace Yarde.WindowSystem.BlendProvider
         UniTask Enter();
         UniTask Exit();
     }
-
 }

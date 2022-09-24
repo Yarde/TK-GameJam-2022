@@ -55,23 +55,23 @@ namespace Yarde.Gameplay
             Food.Value -= dataCost.Food;
         }
 
-        public void Attack()
+        public void Attack(GameLoop gameLoop)
         {
             if (Buildings[BuildingType.Wall].Level > 0)
             {
-                Buildings[BuildingType.Wall].Downgrade();
+                Buildings[BuildingType.Wall].Downgrade(gameLoop);
                 return;
             }
 
             if (Buildings[BuildingType.Fireplace].Level > 0)
             {
-                Buildings[BuildingType.Fireplace].Downgrade();
+                Buildings[BuildingType.Fireplace].Downgrade(gameLoop);
                 return;
             }
 
             if (Buildings[BuildingType.Tent].Level > 0)
             {
-                Buildings[BuildingType.Tent].Downgrade();
+                Buildings[BuildingType.Tent].Downgrade(gameLoop);
             }
         }
     }

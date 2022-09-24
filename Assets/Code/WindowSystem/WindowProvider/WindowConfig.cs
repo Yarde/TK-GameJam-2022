@@ -9,6 +9,9 @@ namespace Yarde.WindowSystem.WindowProvider
     {
         public WindowTypeToPrefab windows;
     }
-    
-    [Serializable] public class WindowTypeToPrefab : SerializableDictionary<WindowType, WindowBase> {}
+
+    [Serializable]
+    public class WindowTypeToPrefab : SerializableDictionary<WindowType, WindowBase>
+    {
+    }
 }

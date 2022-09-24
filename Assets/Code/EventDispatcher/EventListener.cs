@@ -8,7 +8,9 @@ namespace Yarde.EventDispatcher
 {
     public class EventListener : IListener
     {
-        private readonly Dictionary<Type, Func<IEvent, UniTask>> _handlers = new Dictionary<Type, Func<IEvent, UniTask>>();
+        private readonly Dictionary<Type, Func<IEvent, UniTask>> _handlers =
+            new Dictionary<Type, Func<IEvent, UniTask>>();
+
         private CancellationTokenSource _cancellationToken;
         private UniTaskCompletionSource<IEvent> _nextEventAwaiter;
         private IEvent _currentEvent;

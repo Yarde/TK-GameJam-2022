@@ -39,7 +39,8 @@ namespace Yarde.WindowSystem.CanvasProvider
             }
             else
             {
-                this.LogVerbose($"[CanvasManager] removed block on {unblockingType}, Still blocking elements:\n{_typeToBlockadeCounter.ContentToString()}");
+                this.LogVerbose(
+                    $"[CanvasManager] removed block on {unblockingType}, Still blocking elements:\n{_typeToBlockadeCounter.ContentToString()}");
             }
         }
 
@@ -55,7 +56,8 @@ namespace Yarde.WindowSystem.CanvasProvider
             }
 
             mainCanvas.GraphicRaycaster.enabled = false;
-            this.LogVerbose($"[CanvasManager] added block on {blockingType}, Total of blocking elements {_typeToBlockadeCounter.Count}");
+            this.LogVerbose(
+                $"[CanvasManager] added block on {blockingType}, Total of blocking elements {_typeToBlockadeCounter.Count}");
         }
     }
 }

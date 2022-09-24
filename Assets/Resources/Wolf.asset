@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d088577666204b768125727f322674ca, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  TimeToActivate: 3
+  TimeToActivate: 5
   ThresholdToActivate: 0.1
   ChanceOfOccurence: 1
   TimeToKill: 1.5
-  AttackSpeed: 2
+  AttackSpeed: 5
   Threat: 5

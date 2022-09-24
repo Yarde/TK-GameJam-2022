@@ -17,6 +17,7 @@ namespace Yarde.EventDispatcher
             {
                 RaiseEvent(startingEvent);
             }
+
             await flowTask;
         }
 
@@ -36,7 +37,7 @@ namespace Yarde.EventDispatcher
                     return true;
                 }
             }
-            
+
             return false;
         }
     }

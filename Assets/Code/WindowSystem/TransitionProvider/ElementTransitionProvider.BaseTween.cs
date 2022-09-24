@@ -33,6 +33,7 @@ namespace Yarde.WindowSystem.TransitionProvider
             {
                 State = State.In;
             }
+
             private void OnTweenRewind()
             {
                 State = State.Out;

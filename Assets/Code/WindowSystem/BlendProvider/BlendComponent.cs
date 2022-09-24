@@ -8,11 +8,12 @@ namespace Yarde.WindowSystem.BlendProvider
     {
         [Header("Blend Settings")]
         [Tooltip("Configures screen cover that appears under the whole view of the window/popup")]
-        [SerializeField] private BlendType blendType;
+        [SerializeField]
+        private BlendType blendType;
 
         private BlendViewBase _blendView;
 
-        [Inject] 
+        [Inject]
         private void Construct(BlendViewBase blendView)
         {
             TryGetBlend(blendView, gameObject.transform);

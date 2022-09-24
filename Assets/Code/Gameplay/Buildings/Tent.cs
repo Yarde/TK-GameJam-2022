@@ -12,12 +12,21 @@ namespace Yarde.Gameplay.Buildings
             Level.Value = 1;
         }
 
-        public override void Downgrade()
+        public override void Upgrade(GameLoop gameLoop)
         {
-            base.Downgrade();
+            base.Upgrade(gameLoop);
+            if (Level == Data.MaxLevel)
+            {
+                gameLoop.OnWin.Invoke();
+            }
+        }
+
+        public override void Downgrade(GameLoop gameLoop)
+        {
+            base.Downgrade(gameLoop);
             if (Level == 0)
             {
-                this.LogError("Game lost!");
+                gameLoop.OnLoss.Invoke("Your village is destroyed! Protect it with walls and fire next time.");
             }
         }
     }

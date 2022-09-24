@@ -16,18 +16,18 @@ MonoBehaviour:
   DayLength: 20
   DayNightRatio: 0.6
   FoodLoss: 0.5
-  FoodLossModifier: 0.01
+  FoodLossModifier: 0.05
   FoodLossCycles: 5
-  AttacksModifier: 2
+  AttacksModifier: 0.1
   WoodData:
     Gain: 2
-    TimeToCollect: 2
+    TimeToCollect: 3
     StartAmount: 0
   StoneData:
     Gain: 1
     TimeToCollect: 5
     StartAmount: 0
   FoodData:
-    Gain: 5
+    Gain: 2
     TimeToCollect: 1
     StartAmount: 10

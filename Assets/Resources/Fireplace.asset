@@ -13,17 +13,21 @@ MonoBehaviour:
   m_Name: Fireplace
   m_EditorClassIdentifier: 
   Costs:
-  - Wood: 1
+  - Wood: 0
     Stone: 0
     Food: 0
   - Wood: 3
-    Stone: 0
+    Stone: 3
     Food: 0
   - Wood: 5
-    Stone: 0
+    Stone: 5
+    Food: 0
+  - Wood: 10
+    Stone: 10
     Food: 0
   Sprites:
-  - {fileID: 21300000, guid: 32c5cb0f370af58449dd68bfb6ff655b, type: 3}
+  - {fileID: 0}
   - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 21300000, guid: 32c5cb0f370af58449dd68bfb6ff655b, type: 3}
+  - {fileID: 21300000, guid: d2bae337f7b9c854ea344658a3d27074, type: 3}
   BuildTime: 2

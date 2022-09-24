@@ -5,8 +5,11 @@ using Yarde.Utils.SerializableDictionary;
 
 namespace Yarde.WindowSystem.BlendProvider
 {
-    [Serializable] public class BlendProviderToType : SerializableDictionary<BlendType, BlendProviderBase> {}
-    
+    [Serializable]
+    public class BlendProviderToType : SerializableDictionary<BlendType, BlendProviderBase>
+    {
+    }
+
     public class BlendView : BlendViewBase
     {
         [SerializeField] private BlendProviderToType blends;

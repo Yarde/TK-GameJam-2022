@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using UnityEngine;
 using Yarde.Gameplay.Enemies;
 using Yarde.Gameplay.GameData;
 using Yarde.Observable;

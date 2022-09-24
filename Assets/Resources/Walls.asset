@@ -13,17 +13,21 @@ MonoBehaviour:
   m_Name: Walls
   m_EditorClassIdentifier: 
   Costs:
-  - Wood: 1
+  - Wood: 0
     Stone: 0
     Food: 0
-  - Wood: 3
+  - Wood: 20
     Stone: 0
     Food: 0
-  - Wood: 5
-    Stone: 0
+  - Wood: 30
+    Stone: 3
+    Food: 0
+  - Wood: 40
+    Stone: 5
     Food: 0
   Sprites:
-  - {fileID: 21300000, guid: 32c5cb0f370af58449dd68bfb6ff655b, type: 3}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 1b06a38cab38b8a41a2325443397def9, type: 3}
   - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 32c5cb0f370af58449dd68bfb6ff655b, type: 3}
+  - {fileID: 21300000, guid: 2cd10a0ffeecabb42a6ba5f13bcbccbc, type: 3}
   BuildTime: 7

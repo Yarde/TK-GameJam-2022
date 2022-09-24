@@ -33,6 +33,7 @@ namespace Yarde.Flows.Editor
                 {
                     str.Append(type.FullName);
                 }
+
                 str.Append('(');
                 if (constructor != null)
                 {
@@ -41,6 +42,7 @@ namespace Yarde.Flows.Editor
                     {
                         str.Append($"{parameters[i].ParameterType}, ");
                     }
+
                     if (parameters.Length > 0)
                         str.Append(parameters[parameters.Length - 1].ParameterType);
 
@@ -48,9 +50,11 @@ namespace Yarde.Flows.Editor
                     for (int i = 0; i < parameters.Length; ++i)
                     {
                         parametersNames[i] = char.ToUpper(parameters[i].Name[0]) + parameters[i].Name.Substring(1);
-                        parametersNames[i] = Regex.Replace(parametersNames[i], "([a-z](?=[A-Z]|[0-9])|[A-Z](?=[A-Z][a-z]|[0-9])|[0-9](?=[^0-9]))", "$1 ");
+                        parametersNames[i] = Regex.Replace(parametersNames[i],
+                            "([a-z](?=[A-Z]|[0-9])|[A-Z](?=[A-Z][a-z]|[0-9])|[0-9](?=[^0-9]))", "$1 ");
                     }
                 }
+
                 str.Append(')');
 
                 toString = str.ToString();
@@ -117,7 +121,7 @@ namespace Yarde.Flows.Editor
         }
 
 
-        private void SelectEvent(Event toSelect) 
+        private void SelectEvent(Event toSelect)
         {
             Undo.RecordObject(_target, "Event Selected");
             _target.SetEvent(toSelect.type);
@@ -148,7 +152,7 @@ namespace Yarde.Flows.Editor
             {
                 return;
             }
-            
+
             if (evt.constructor == null)
             {
                 EditorGUILayout.LabelField("No suitable constructors found.", ErrorStyle);
@@ -168,7 +172,8 @@ namespace Yarde.Flows.Editor
         private static bool IsValidParameter(ParameterInfo parameter)
         {
             Type type = parameter.ParameterType;
-            return type.Equals(typeof(bool)) || type.Equals(typeof(int)) || type.Equals(typeof(float)) || type.Equals(typeof(string));
+            return type.Equals(typeof(bool)) || type.Equals(typeof(int)) || type.Equals(typeof(float)) ||
+                   type.Equals(typeof(string));
         }
 
         private static Type[] GetInheritedTypes(Type baseType)
@@ -176,8 +181,10 @@ namespace Yarde.Flows.Editor
             var types = new List<Type>();
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                types.AddRange(assembly.GetTypes().Where(type => type.IsClass && !type.IsAbstract && !type.IsInterface && baseType.IsAssignableFrom(type)));
+                types.AddRange(assembly.GetTypes().Where(type =>
+                    type.IsClass && !type.IsAbstract && !type.IsInterface && baseType.IsAssignableFrom(type)));
             }
+
             return types.ToArray();
         }
 
@@ -204,6 +211,7 @@ namespace Yarde.Flows.Editor
                     }
                 }
             }
+
             events.Sort();
             events.Insert(0, new Event(null, null));
 

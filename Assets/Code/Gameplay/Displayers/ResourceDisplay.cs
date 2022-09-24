@@ -12,7 +12,7 @@ namespace Yarde.Gameplay.Displayers
         [SerializeField] protected GameLoop gameLoop;
         [SerializeField] private ResourceType type;
         [SerializeField] private TextMeshProUGUI text;
-        
+
         private float _previousValue;
         private string _format;
 
@@ -25,7 +25,7 @@ namespace Yarde.Gameplay.Displayers
                 ResourceType.Food => gameLoop.State.Food,
                 _ => throw new ArgumentOutOfRangeException()
             };
-            
+
             _format = type switch
             {
                 ResourceType.Food => "F1",

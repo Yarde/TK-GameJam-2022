@@ -14,16 +14,17 @@ namespace Yarde.Gameplay.Buildings
             Level = new ObservableProperty<int>(0, state);
         }
 
-        public void Upgrade()
+        public virtual void Upgrade(GameLoop gameLoop)
         {
             if (Level >= Data.MaxLevel)
             {
                 return;
             }
+
             Level.Value++;
         }
-        
-        public virtual void Downgrade()
+
+        public virtual void Downgrade(GameLoop gameLoop)
         {
             Level.Value--;
         }

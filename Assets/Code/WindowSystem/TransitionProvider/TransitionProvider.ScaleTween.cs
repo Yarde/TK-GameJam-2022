@@ -9,7 +9,7 @@ namespace Yarde.WindowSystem.TransitionProvider
         {
             private readonly Vector3 _hiddenScale = Vector3.zero;
             private readonly Vector3 _shownScale;
-            
+
             public DoTweenScaleTransition(TransitionProvider target) : base(target)
             {
                 Transform targetTransform = target.transform;
@@ -19,7 +19,8 @@ namespace Yarde.WindowSystem.TransitionProvider
 
             protected override Tween CreateTween(TransitionProvider target)
             {
-                return target.transform.DOScale(_shownScale, target.duration).SetEase(target.ease).SetDelay(target.delay);
+                return target.transform.DOScale(_shownScale, target.duration).SetEase(target.ease)
+                    .SetDelay(target.delay);
             }
         }
     }

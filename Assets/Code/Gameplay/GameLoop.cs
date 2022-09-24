@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using VContainer;
 using Yarde.Gameplay.GameData;
+using Yarde.Gameplay.GameplayButtons;
 using Yarde.Observable;
 using Yarde.Utils.Logger;
 
@@ -20,6 +22,9 @@ namespace Yarde.Gameplay
         public float CurrentTime => Mathf.Cos((_cycles - _data.DayLength) / _data.DayLength) + _data.DayNightRatio;
         public bool IsNight => CurrentTime <= 0f;
 
+        public Action OnWin;
+        public Action<string> OnLoss;
+
         private void Awake()
         {
             _cycles = new(0, _gameState);
@@ -28,6 +33,10 @@ namespace Yarde.Gameplay
 
         private void Update()
         {
+            if (_gameState.Food.Value < 0 || _gameState.Buildings[BuildingType.Tent].Level.Value < 1)
+            {
+                return;
+            }
             if (_timer > 0)
             {
                 _timer -= Time.deltaTime;
@@ -41,8 +50,11 @@ namespace Yarde.Gameplay
             if (_cycles.Value % _data.FoodLossCycles == 0)
             {
                 _gameState.Food.Value -= _data.FoodLoss * (1 + _data.FoodLossModifier * _cycles.Value);
+                if (_gameState.Food.Value < 0)
+                {
+                    OnLoss?.Invoke("You let your people starve to death. Make sure to feed them next time!");
+                }
             }
-            
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Yarde.Gameplay.GameData
         public float FoodLoss;
         public float FoodLossModifier;
         public int FoodLossCycles;
-        
+
         public float AttacksModifier;
-        
+
         // resources
         public ResourceData WoodData;
         public ResourceData StoneData;

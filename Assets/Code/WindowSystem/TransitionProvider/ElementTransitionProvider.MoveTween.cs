@@ -31,7 +31,8 @@ namespace Yarde.WindowSystem.TransitionProvider
 
             protected override Tween CreateTween(TransitionProvider target)
             {
-                return _transform.DOAnchorPos(_shownPosition, target.duration).SetEase(target.ease).SetDelay(target.delay);
+                return _transform.DOAnchorPos(_shownPosition, target.duration).SetEase(target.ease)
+                    .SetDelay(target.delay);
             }
 
             private Vector2 GetHiddenPosition(Vector2 shownPosition, MoveDirection direction)

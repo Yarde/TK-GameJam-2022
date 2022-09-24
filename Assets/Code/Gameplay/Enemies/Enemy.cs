@@ -12,6 +12,11 @@ namespace Yarde.Gameplay.Enemies
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
 
+        [SerializeField] private AudioSource source;
+        [SerializeField] private AudioClip onSpawn;
+        [SerializeField] private AudioClip onAttack;
+        [SerializeField] private AudioClip onDead;
+
         public ObservableProperty<bool> IsActive { get; private set; }
         private EnemyData _data;
         private GameLoop _gameLoop;
@@ -32,6 +37,9 @@ namespace Yarde.Gameplay.Enemies
             spriteRenderer.enabled = true;
             spriteRenderer.DOFade(1f, 0.3f);
 
+            source.clip = onSpawn;
+            source.Play();
+
             _cancellation = new CancellationTokenSource();
             StartAttack().Forget();
         }
@@ -41,7 +49,9 @@ namespace Yarde.Gameplay.Enemies
             await UniTask.Delay(_data.TimeToActivate.ToMilliseconds(), cancellationToken: _cancellation.Token);
             while (!_cancellation.IsCancellationRequested)
             {
-                _gameLoop.State.Attack();
+                _gameLoop.State.Attack(_gameLoop);
+                source.clip = onAttack;
+                source.Play();
                 transform.DOShakePosition(0.3f, 2f);
                 await UniTask.Delay(_data.AttackSpeed.ToMilliseconds(), cancellationToken: _cancellation.Token);
             }
@@ -52,6 +62,8 @@ namespace Yarde.Gameplay.Enemies
             IsActive.Value = false;
 
             spriteRenderer.enabled = false;
+            source.clip = onDead;
+            source.Play();
 
             _cancellation.Cancel();
             _cancellation.Dispose();

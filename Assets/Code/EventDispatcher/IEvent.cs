@@ -1,6 +1,10 @@
 namespace Yarde.EventDispatcher
 {
-    public interface IEvent { }
-    
-    public class BackButtonEvent : IEvent {}
+    public interface IEvent
+    {
+    }
+
+    public class BackButtonEvent : IEvent
+    {
+    }
 }

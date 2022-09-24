@@ -44,7 +44,7 @@ namespace Yarde.Gameplay.Enemies
                 }
                 else if (threat < maxThreat && threat < data.ThresholdToActivate)
                 {
-                    if (Random.Range(data.ChanceOfOccurence, 100f) < _chance)
+                    if (Random.Range(data.ChanceOfOccurence, 100f) < _chance - _gameLoop.State.FireFuel.Value + _gameLoop.Data.AttacksModifier * _gameLoop.Cycles)
                     {
                         enemy.Show();
                         _chance = 0;

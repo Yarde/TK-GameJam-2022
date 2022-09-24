@@ -4,7 +4,7 @@ using Yarde.Utils.Logger;
 
 namespace Yarde.EventDispatcher
 {
-    [LogSettings(color:"#FAA")]
+    [LogSettings(color: "#FAA")]
     public interface IListener
     {
         string Name { get; }
