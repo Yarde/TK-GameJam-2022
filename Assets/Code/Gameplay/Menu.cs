@@ -10,6 +10,7 @@ namespace Yarde.Gameplay
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private Button button;
+        [SerializeField] private Button buttonX;
 
         public void ShowMenu(string title, string description)
         {
@@ -18,6 +19,7 @@ namespace Yarde.Gameplay
             _description.text = description;
 
             button.onClick.AddListener(() => SceneManager.LoadScene(0));
+            buttonX.onClick.AddListener(() => SceneManager.LoadScene(0));
         }
     }
 }

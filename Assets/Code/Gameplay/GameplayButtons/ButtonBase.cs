@@ -5,7 +5,6 @@ using Yarde.Observable;
 
 namespace Yarde.Gameplay.GameplayButtons
 {
-    [RequireComponent(typeof(Button))]
     public abstract class ButtonBase : MonoBehaviour
     {
         [SerializeField] protected GameLoop _gameLoop;
