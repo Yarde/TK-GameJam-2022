@@ -63,12 +63,6 @@ namespace Yarde.Gameplay
                 return;
             }
 
-            if (Buildings[BuildingType.Fireplace].Level > 0)
-            {
-                Buildings[BuildingType.Fireplace].Downgrade(gameLoop);
-                return;
-            }
-
             if (Buildings[BuildingType.Tent].Level > 0)
             {
                 Buildings[BuildingType.Tent].Downgrade(gameLoop);

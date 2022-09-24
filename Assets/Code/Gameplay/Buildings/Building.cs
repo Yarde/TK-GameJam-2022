@@ -26,7 +26,7 @@ namespace Yarde.Gameplay.Buildings
             }
 
             Level.Value++;
-            HealthPoints.Value = Data.HealthPoints;
+            HealthPoints.Value = Data.HealthPoints * Level.Value;
 
             if (_state.Buildings[BuildingType.Tent].Level.Value == _state.Buildings[BuildingType.Tent].Data.MaxLevel)
             {
@@ -39,7 +39,7 @@ namespace Yarde.Gameplay.Buildings
             HealthPoints.Value--;
             if (HealthPoints.Value <= 0)
             {
-                Level.Value--;
+                Level.Value = 0;
             }
         }
     }

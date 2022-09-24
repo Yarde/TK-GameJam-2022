@@ -22,7 +22,7 @@ MonoBehaviour:
   - Wood: 5
     Stone: 2
     Food: 0
-  - Wood: 10
+  - Wood: 12
     Stone: 6
     Food: 0
   Sprites:
@@ -31,4 +31,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f10bfbc9277f87046ae3fe3d131f2b52, type: 3}
   - {fileID: 21300000, guid: 53cca9d025bf2f1419486e48469d4107, type: 3}
   BuildTime: 8
-  HealthPoints: 3
+  HealthPoints: 2

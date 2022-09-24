@@ -18,6 +18,7 @@ namespace Yarde.Gameplay
             var intensity = Mathf.Cos((obj.Value - gameLoop.Data.DayLength) / gameLoop.Data.DayLength) +
                             gameLoop.Data.DayNightRatio;
             light.intensity = intensity;
+            light.color = gameLoop.IsNight ? Color.blue : Color.white;
         }
     }
 }
