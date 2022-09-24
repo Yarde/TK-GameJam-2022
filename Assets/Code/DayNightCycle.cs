@@ -7,7 +7,6 @@ namespace Yarde
     {
         [SerializeField] private GameLoop gameLoop;
         [SerializeField] private Light light;
-        [SerializeField] private float daySpeed = 100f;
 
         private void Awake()
         {
@@ -16,7 +15,8 @@ namespace Yarde
 
         private void OnCycleChange(IObservableProperty<int> obj)
         {
-            var intensity = Mathf.Cos((obj.Value - 100) / daySpeed) + 0.7f;
+            var intensity = Mathf.Cos((obj.Value - gameLoop.Data.DayLength) / gameLoop.Data.DayLength) +
+                            gameLoop.Data.DayNightRatio;
             light.intensity = intensity;
         }
     }

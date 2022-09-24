@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Yarde.Buildings;
 
-namespace Yarde.Buildings
+namespace Yarde.GameData
 {
-    [CreateAssetMenu(menuName = "Buildings/Data")]
+    [CreateAssetMenu(menuName = "Data/Buildings")]
     public class BuildingData : ScriptableObject
     {
         public List<ResourceCost> Costs;

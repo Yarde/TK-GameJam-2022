@@ -1,4 +1,5 @@
-﻿using Yarde.Observable;
+﻿using Yarde.GameData;
+using Yarde.Observable;
 using Yarde.Utils.Logger;
 
 namespace Yarde.Buildings

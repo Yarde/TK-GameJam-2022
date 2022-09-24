@@ -40,19 +40,14 @@ namespace Yarde.GameplayButtons
 
         private void SetButtonActive()
         {
-            var cost = _building.Data.Costs[_building.Level + 1];
-
-            if (cost.Wood <= _gameLoop.State.Wood
-                && cost.Stone <= _gameLoop.State.Stone
-                && cost.Food <= _gameLoop.State.Food
-                && _building.Data.MaxLevel > _building.Level)
-            {
-                _button.gameObject.SetActive(true);
-            }
-            else
+            if (_building.Data.MaxLevel <= _building.Level)
             {
                 _button.gameObject.SetActive(false);
+                return;
             }
+            
+            var cost = _building.Data.Costs[_building.Level + 1];
+            _button.gameObject.SetActive(cost.HasEnough(_gameLoop.State));
         }
 
         private void SetButtonState(IObservableProperty<bool> obj)
