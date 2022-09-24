@@ -20,10 +20,10 @@ MonoBehaviour:
     Stone: 0
     Food: 0
   - Wood: 5
-    Stone: 2
+    Stone: 3
     Food: 0
   - Wood: 12
-    Stone: 6
+    Stone: 8
     Food: 0
   Sprites:
   - {fileID: 0}

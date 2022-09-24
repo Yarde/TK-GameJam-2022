@@ -19,11 +19,11 @@ MonoBehaviour:
   - Wood: 4
     Stone: 0
     Food: 0
+  - Wood: 6
+    Stone: 1
+    Food: 0
   - Wood: 8
     Stone: 2
-    Food: 0
-  - Wood: 12
-    Stone: 3
     Food: 0
   Sprites:
   - {fileID: 0}
