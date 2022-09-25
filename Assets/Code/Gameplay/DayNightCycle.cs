@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Yarde.Observable;
+using Yarde.Utils.Extensions;
 
 namespace Yarde.Gameplay
 {
@@ -10,12 +11,16 @@ namespace Yarde.Gameplay
         [SerializeField] private Light light;
 
         [SerializeField] private Image moon;
+        [SerializeField] private Image moonFrame;
         [SerializeField] private Image sun;
+        [SerializeField] private Image sunFrame;
 
         private void Update()
         {
-            moon.enabled = gameLoop.IsNight;
-            sun.enabled = !gameLoop.IsNight;
+            moon.SetAlpha(-gameLoop.CurrentTime);
+            moonFrame.SetAlpha(-gameLoop.CurrentTime);
+            sun.SetAlpha(gameLoop.CurrentTime);
+            sunFrame.SetAlpha(gameLoop.CurrentTime);
         }
         
         private void Start()

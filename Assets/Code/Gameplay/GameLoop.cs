@@ -19,7 +19,9 @@ namespace Yarde.Gameplay
         public GameState State => _gameState;
         public GameplayData Data => _data;
         public ObservableProperty<int> Cycles => _cycles;
-        public float CurrentTime => Mathf.Cos((_cycles - _data.DayLength) / _data.DayLength) + _data.DayNightRatio - 1f;
+        
+        private float DayNightRatio => Mathf.Max(0f, _data.DayNightRatio - 0.1f * _cycles.Value / Data.DayLength);
+        public float CurrentTime => Mathf.Cos((_cycles.Value - _data.DayLength) / _data.DayLength) + DayNightRatio;
         public bool IsNight => CurrentTime <= 0f;
 
         public Action OnWin;

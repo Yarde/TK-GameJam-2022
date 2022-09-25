@@ -43,6 +43,7 @@ namespace Yarde.Gameplay.Buildings
             if (HealthPoints.Value <= 0)
             {
                 Level.Value--;
+                HealthPoints.Value = Data.HealthPoints * Level.Value;
             }
             this.LogWarning($"{GetType()} got damaged, {HealthPoints.Value}, {Level.Value}");
         }

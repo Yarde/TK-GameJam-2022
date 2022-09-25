@@ -25,7 +25,10 @@ namespace Yarde.Gameplay.GameplayButtons
         private void OnHPChange()
         {
             slider.gameObject.SetActive(_building.Level.Value >= 1);
-            slider.value = _building.HealthPoints.Value / (float)(_building.Data.HealthPoints * _building.Data.MaxLevel);
+            if (_building.Level.Value >= 1)
+            {
+                slider.value = _building.HealthPoints.Value / (float)(_building.Data.HealthPoints * _building.Level.Value);
+            }
         }
     }
 }
