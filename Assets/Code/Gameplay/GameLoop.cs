@@ -19,7 +19,7 @@ namespace Yarde.Gameplay
         public GameState State => _gameState;
         public GameplayData Data => _data;
         public ObservableProperty<int> Cycles => _cycles;
-        public float CurrentTime => Mathf.Cos((_cycles - _data.DayLength) / _data.DayLength) + _data.DayNightRatio;
+        public float CurrentTime => Mathf.Cos((_cycles - _data.DayLength) / _data.DayLength) + _data.DayNightRatio - 1f;
         public bool IsNight => CurrentTime <= 0f;
 
         public Action OnWin;
@@ -33,7 +33,8 @@ namespace Yarde.Gameplay
 
         private void Update()
         {
-            if (_gameState.Food.Value < 0 || _gameState.Buildings[BuildingType.Tent].Level.Value < 1)
+            var tent = _gameState.Buildings[BuildingType.Tent];
+            if (_gameState.Food.Value < 0 || tent.Level.Value < 1 || tent.Level.Value == tent.Data.MaxLevel)
             {
                 return;
             }

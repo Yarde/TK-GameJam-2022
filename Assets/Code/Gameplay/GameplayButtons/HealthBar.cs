@@ -18,13 +18,14 @@ namespace Yarde.Gameplay.GameplayButtons
             _building = gameLoop.State.Buildings[type];
 
             _building.HealthPoints.OnValueChanged += _ => OnHPChange();
+            _building.Level.OnValueChanged += _ => OnHPChange();
             OnHPChange();
         }
 
         private void OnHPChange()
         {
             slider.gameObject.SetActive(_building.Level.Value >= 1);
-            slider.value = _building.HealthPoints.Value / (float)_building.Data.HealthPoints;
+            slider.value = _building.HealthPoints.Value / (float)(_building.Data.HealthPoints * _building.Data.MaxLevel);
         }
     }
 }

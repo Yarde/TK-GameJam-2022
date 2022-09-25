@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Yarde.Gameplay.GameData;
+using Yarde.Observable;
 using Yarde.Utils.Logger;
 
 namespace Yarde.Gameplay.Buildings
@@ -10,6 +11,7 @@ namespace Yarde.Gameplay.Buildings
         {
             Data = Resources.Load<BuildingData>("Tent");
             Level.Value = 1;
+            HealthPoints = new ObservableProperty<int>(Data.HealthPoints, state);
         }
 
         public override void Downgrade(GameLoop gameLoop)

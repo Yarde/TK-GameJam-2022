@@ -19,6 +19,7 @@ namespace Yarde.Gameplay.GameplayButtons
             _enemy = enemy;
 
             _enemy.IsActive.OnValueChanged += OnActiveChange;
+            //_gameLoop.State.IsBusy.OnValueChanged += OnActiveChange;
             OnActiveChange(_enemy.IsActive);
         }
 
@@ -29,7 +30,7 @@ namespace Yarde.Gameplay.GameplayButtons
                 return;
             }
 
-            _button.gameObject.SetActive(obj.Value);
+            _button.gameObject.SetActive(_enemy.IsActive);
         }
 
         protected override void Setup()

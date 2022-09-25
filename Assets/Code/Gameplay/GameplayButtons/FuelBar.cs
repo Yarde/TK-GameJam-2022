@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using Yarde.Gameplay.Buildings;
 using Yarde.Gameplay.GameData;
+using Yarde.Utils.Logger;
 
 namespace Yarde.Gameplay.GameplayButtons
 {
@@ -27,7 +28,10 @@ namespace Yarde.Gameplay.GameplayButtons
         private void OnFuelChange()
         {
             slider.gameObject.SetActive(_fireplace.Level.Value >= 1);
-            slider.value = gameLoop.State.FireFuel.Value / _fireData.MaxFuel * _fireplace.Level;
+            if (_fireplace.Level.Value >= 1)
+            {
+                slider.value = gameLoop.State.FireFuel.Value / (_fireData.MaxFuel * _fireplace.Level.Value);
+            }
         }
     }
 }

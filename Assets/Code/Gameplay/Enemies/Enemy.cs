@@ -55,7 +55,8 @@ namespace Yarde.Gameplay.Enemies
 
         private async UniTask StartAttack()
         {
-            await UniTask.Delay(_data.TimeToActivate.ToMilliseconds(), cancellationToken: _cancellation.Token);
+            var timeToFirstAttach = Mathf.Max(_data.TimeToActivate - _gameLoop.Cycles.Value / (_gameLoop.Data.DayLength * 2f), _data.TimeToActivate / 2f);
+            await UniTask.Delay(timeToFirstAttach.ToMilliseconds() , cancellationToken: _cancellation.Token);
             while (!_cancellation.IsCancellationRequested)
             {
                 _gameLoop.State.Attack(_gameLoop);
@@ -65,7 +66,9 @@ namespace Yarde.Gameplay.Enemies
                 await transform.DOMove(middle, 0.4f).SetEase(Ease.InCubic).WithCancellation(_cancellation.Token);
                 if (_cancellation.IsCancellationRequested) return;
                 transform.DOMove(enter, 0.4f).SetEase(Ease.OutCubic);
-                await UniTask.Delay(_data.AttackSpeed.ToMilliseconds(), cancellationToken: _cancellation.Token);
+
+                var attachSpeed = _data.AttackSpeed + Random.Range(Mathf.Max(-1,-(_gameLoop.Cycles.Value / (_gameLoop.Data.DayLength * 2))), 1f);
+                await UniTask.Delay(attachSpeed.ToMilliseconds(), cancellationToken: _cancellation.Token);
             }
         }
 

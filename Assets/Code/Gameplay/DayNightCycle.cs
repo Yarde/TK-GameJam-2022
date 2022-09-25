@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Yarde.Observable;
 
 namespace Yarde.Gameplay
@@ -8,6 +9,15 @@ namespace Yarde.Gameplay
         [SerializeField] private GameLoop gameLoop;
         [SerializeField] private Light light;
 
+        [SerializeField] private Image moon;
+        [SerializeField] private Image sun;
+
+        private void Update()
+        {
+            moon.enabled = gameLoop.IsNight;
+            sun.enabled = !gameLoop.IsNight;
+        }
+        
         private void Start()
         {
             gameLoop.Cycles.OnValueChanged += OnCycleChange;
@@ -18,7 +28,6 @@ namespace Yarde.Gameplay
             var intensity = Mathf.Cos((obj.Value - gameLoop.Data.DayLength) / gameLoop.Data.DayLength) +
                             gameLoop.Data.DayNightRatio;
             light.intensity = intensity;
-            light.color = gameLoop.IsNight ? Color.blue : Color.white;
         }
     }
 }

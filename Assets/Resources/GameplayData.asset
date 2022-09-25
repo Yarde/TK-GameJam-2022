@@ -18,7 +18,7 @@ MonoBehaviour:
   FoodLoss: 0.5
   FoodLossModifier: 0.01
   FoodLossCycles: 5
-  AttacksModifier: 0
+  AttacksModifier: 0.1
   WoodData:
     Gain: 2
     TimeToCollect: 3

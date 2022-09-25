@@ -8,7 +8,7 @@ namespace Yarde.Gameplay.Buildings
     public abstract class Building
     {
         public ObservableProperty<int> Level { get; }
-        public ObservableProperty<int> HealthPoints { get; }
+        public ObservableProperty<int> HealthPoints { get; set; }
         public BuildingData Data;
         protected GameState _state;
 
@@ -16,7 +16,6 @@ namespace Yarde.Gameplay.Buildings
         {
             _state = state;
             Level = new ObservableProperty<int>(0, state);
-            HealthPoints = new ObservableProperty<int>(2, state);
         }
 
         public void Upgrade(GameLoop gameLoop)
@@ -27,8 +26,11 @@ namespace Yarde.Gameplay.Buildings
             }
 
             Level.Value++;
-            HealthPoints.Value = Data.HealthPoints * Level.Value;
-
+            if (HealthPoints != null)
+            {
+                HealthPoints.Value = Data.HealthPoints * Level.Value;
+            }
+            
             if (_state.Buildings[BuildingType.Tent].Level.Value == _state.Buildings[BuildingType.Tent].Data.MaxLevel)
             {
                 gameLoop.OnWin.Invoke();
@@ -40,7 +42,7 @@ namespace Yarde.Gameplay.Buildings
             HealthPoints.Value--;
             if (HealthPoints.Value <= 0)
             {
-                Level.Value = 0;
+                Level.Value--;
             }
             this.LogWarning($"{GetType()} got damaged, {HealthPoints.Value}, {Level.Value}");
         }

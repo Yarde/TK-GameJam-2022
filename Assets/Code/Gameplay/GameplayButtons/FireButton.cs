@@ -32,6 +32,9 @@ namespace Yarde.Gameplay.GameplayButtons
         private void OnTick(IObservableProperty<int> obj)
         {
             _fireFuel.Value -= _fireData.FuelLossOnTick;
+
+            Tutorial();
+
             if (_fireFuel.Value <= 0f || _fireplace.Level < 1)
             {
                 _fireFuel.Value = 0f;
@@ -42,6 +45,14 @@ namespace Yarde.Gameplay.GameplayButtons
             }
 
             AnimateLight();
+        }
+
+        private void Tutorial()
+        {
+            if (_fireFuel.Value <= 0f && _fireplace.Level >= 1 && _gameLoop.IsNight)
+            {
+                transform.DOShakePosition(0.2f, Vector3.one * 3f, 1);
+            }
         }
 
         private void AnimateLight()

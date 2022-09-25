@@ -32,11 +32,15 @@ namespace Yarde.Gameplay.Enemies
         private void OnTick(IObservableProperty<int> obj)
         {
             var threat = 0f;
-            var maxThreat = 1f - _gameLoop.CurrentTime;
+            var maxThreat = (0f - _gameLoop.CurrentTime) * (_gameLoop.Cycles.Value / _gameLoop.Data.DayLength / 3f);
+
             for (var i = 0; i < enemies.Length; i++)
             {
                 var enemy = enemies[i];
                 var data = allData[i];
+
+                this.LogInfo(
+                    $"Time: {_gameLoop.CurrentTime}, Max threat: {maxThreat}, threat: {threat}, {enemy.IsActive.Value}, {data.ThresholdToActivate}");
 
                 if (enemy.IsActive.Value)
                 {
@@ -45,8 +49,12 @@ namespace Yarde.Gameplay.Enemies
                 else if (threat < maxThreat && threat < data.ThresholdToActivate)
                 {
                     var fireModifier = _gameLoop.State.FireFuel.Value;
-                    var probabilityOfAttack = _chance - fireModifier;
-                    if (Random.Range(data.ChanceOfOccurence, 100f) < probabilityOfAttack)
+                    var difficultyProgression = _gameLoop.Data.AttacksModifier * _gameLoop.Cycles.Value;
+                    var probabilityOfAttack = _chance - fireModifier + difficultyProgression;
+                    var random = Random.Range(data.ChanceOfOccurence, 100f);
+
+                    this.LogInfo($"random: {random} < {_chance} - {fireModifier} + {difficultyProgression}");
+                    if (random < probabilityOfAttack)
                     {
                         enemy.Show();
                         _chance = 0;
