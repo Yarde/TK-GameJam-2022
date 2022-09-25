@@ -12,6 +12,10 @@ namespace Yarde.Gameplay.GameplayButtons
 
         [SerializeField] protected AudioSource audioSource;
         [SerializeField] protected AudioClip clickClip;
+        [SerializeField] protected GameObject human;
+        [SerializeField] protected Vector3 position;
+        [SerializeField] protected Vector3 defaultPosition;
+        [SerializeField] protected bool flip;
 
         protected Button _button;
 
@@ -39,7 +43,17 @@ namespace Yarde.Gameplay.GameplayButtons
 
             _loadingIcon.fillAmount = 0;
 
+            human.transform.position = position;
+            human.transform.localScale = new Vector3(flip ? -1f : 1f, 1f, 1f);
+
+            //human.SetActive(true);
+
             await DoAction();
+
+            human.transform.position = defaultPosition;
+            human.transform.localScale = new Vector3(1f, 1f, 1f);
+            
+            //human.SetActive(false);
 
             audioSource.Stop();
             _gameLoop.State.IsBusy.Value = false;
